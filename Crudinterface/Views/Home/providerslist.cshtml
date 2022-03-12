@@ -1,0 +1,74 @@
+﻿@model Crudinterface.Models.Viewmodel.User_Reg_Viewmodel
+
+@{
+    ViewBag.Title = "providerslist";
+}
+
+<h2>providerslist</h2>
+
+<p>
+    @Html.ActionLink("Create New", "UserRegCreate", "Home")<br />
+    @Html.ActionLink("Login New", "Login", "Login")
+</p>
+<table class="table">
+    <tr>
+        <th> Id </th>
+        <th> Name </th>        
+        <th> Email </th>
+        <th> Password </th>
+        <th> Phone </th>
+        <th> Dropdown </th>
+        <th> Gender </th>
+        <th> Date </th>
+        <th> Image </th>
+        <th> description </th>
+
+    </tr>
+    @if(Model.User_Reglist.Count > 0)
+    {
+
+
+        foreach (var item in Model.User_Reglist)
+        {
+            <tr>
+                <td>
+                    @item.id
+                </td>
+                <td>
+                    @item.name
+                </td>
+                <td>
+                    @item.email
+                </td>
+                <td>
+                    @item.password
+                </td>
+                <td>
+                    @item.phone
+                </td>
+                <td>
+                    @item.dropdown
+                </td>
+                <td>
+                    @item.gender
+                </td>
+                <td>
+                    @item.date
+                </td>
+                <td>
+                    <img src="~/image/@item.image" width="100" height="100" />
+                </td>
+                <td>
+                    @Html.Raw(item.description) 
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "UserRegEdit", new { id = item.id }) |
+
+                    @Html.ActionLink("Delete", "DeleteServiceProvider", new { id = item.id })
+                </td>
+            </tr>
+        }
+    }
+
+</table>

@@ -1,0 +1,132 @@
+﻿@model Crudinterface.Models.Viewmodel.User_Reg_Viewmodel
+
+@{
+    ViewBag.Title = "UserRegCreate";
+}
+
+<h2>UserRegCreate</h2>
+<link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/trontastic/jquery-ui.css" rel="stylesheet" />
+
+
+
+
+@using (Html.BeginForm("UserRegCreate", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>User_Reg_Viewmodel</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.User_Regobj.name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.User_Regobj.name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.User_Regobj.name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.User_Regobj.email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.User_Regobj.email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.User_Regobj.email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.User_Regobj.password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.User_Regobj.password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.User_Regobj.password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.User_Regobj.Cpassword, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.User_Regobj.Cpassword, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.User_Regobj.Cpassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.User_Regobj.phone, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.User_Regobj.phone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.User_Regobj.phone, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.User_Regobj.dropdown, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.User_Regobj.dropdown, new List<SelectListItem>()
+            {
+              new SelectListItem { Text="India" },
+              new SelectListItem { Text="Australia" },
+              new SelectListItem { Text="USA" }})
+            @Html.ValidationMessageFor(model => model.User_Regobj.dropdown, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.User_Regobj.gender, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.Label("Male")
+            @Html.RadioButtonFor(model => model.User_Regobj.gender, "M")
+            @Html.Label("Female")
+            @Html.RadioButtonFor(model => model.User_Regobj.gender, "F")
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.User_Regobj.date, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.User_Regobj.date, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.User_Regobj.date, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.User_Regobj.image, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="file" />
+            @Html.ValidationMessageFor(model => model.User_Regobj.image, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.User_Regobj.description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.User_Regobj.description, new { @class = "ckeditor" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "providerslist")
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.13.1.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#User_Regobj_date").datepicker();
+        });
+    </script>
+}
+
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
